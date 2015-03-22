@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:xsp="http://www.owl-ontologies.com/2005/08/07/xsp.owl#"
+    xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+    xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+    xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns="http://www.owl-ontologies.com/Ontology1426673991.owl#"
+  xml:base="http://www.owl-ontologies.com/Ontology1426673991.owl">
+  <owl:Ontology rdf:about=""/>
+  <rdfs:Class rdf:ID="Class_3"/>
+  <rdfs:Class rdf:ID="Class_4">
+    <rdfs:subClassOf rdf:resource="#Class_3"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:ID="Class_1"/>
+  <rdfs:Class rdf:ID="Class_2">
+    <rdfs:subClassOf rdf:resource="#Class_1"/>
+  </rdfs:Class>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.5, Build 663)  http://protege.stanford.edu -->
