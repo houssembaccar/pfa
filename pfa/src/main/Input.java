@@ -2,12 +2,13 @@ package main;
 
 import java.io.*;
 import java.util.*;
+
 import com.pfa.beans.*;
+import com.pfa.model.ConceptManagement;
 public class Input{
 	
 	private Scanner scanner;
-	public void openFile(String fileName){
-		
+	public void openFile(String fileName){		
 		try {
 			scanner = new Scanner(new File(fileName));
 		} catch (FileNotFoundException e) {
@@ -17,26 +18,18 @@ public class Input{
 	}
 	public void readFile (){
 		int indexOfFirstQuote;
-		int indexOfSecondQuote;
-		ArrayList<Concept> conceptList= new ArrayList<Concept>();
-		
+		int indexOfSecondQuote;	
 		while(scanner.hasNext()){
 			String currentLine=scanner.nextLine();
 			if (currentLine.contains("<rdfs:Class rdf:ID"))
 			{
 				indexOfFirstQuote=currentLine.indexOf("\"");
-				indexOfSecondQuote=currentLine.lastIndexOf("\"");
-				
-				conceptList.add(new Concept(currentLine.substring(indexOfFirstQuote+1, indexOfSecondQuote)));
-			}
-		
-		}
-		for(int i=0;i<conceptList.size();i++) {
-			System.out.println(conceptList.get(i).getName());
+				indexOfSecondQuote=currentLine.lastIndexOf("\"");				
+				ConceptManagement.addConcept(new Concept(currentLine.substring(indexOfFirstQuote+1, indexOfSecondQuote)));
+			}		
 		}
 	}
-	public void closeFile(){
-		
+	public void closeFile(){		
 		scanner.close();
 	}
 }
