@@ -19,13 +19,24 @@ public class Input{
 	public void readFile (){
 		int indexOfFirstQuote;
 		int indexOfSecondQuote;	
+		String conceptName;
+		String parentOfConceptName;
+		Concept concept = null;
 		while(scanner.hasNext()){
 			String currentLine=scanner.nextLine();
-			if (currentLine.contains("<rdfs:Class rdf:ID"))
+			if (currentLine.contains("<rdfs:subClassOf rdf:resource=")) {
+				indexOfFirstQuote=currentLine.indexOf("\"");
+				indexOfSecondQuote=currentLine.lastIndexOf("\"");
+				parentOfConceptName=currentLine.substring(indexOfFirstQuote+40, indexOfSecondQuote);
+				ConceptManagement.addParentName(parentOfConceptName,concept);
+			}
+			if (currentLine.contains("<owl:Class rdf:about"))
 			{
 				indexOfFirstQuote=currentLine.indexOf("\"");
-				indexOfSecondQuote=currentLine.lastIndexOf("\"");				
-				ConceptManagement.addConcept(new Concept(currentLine.substring(indexOfFirstQuote+1, indexOfSecondQuote)));
+				indexOfSecondQuote=currentLine.lastIndexOf("\"");	
+				conceptName=currentLine.substring(indexOfFirstQuote+40, indexOfSecondQuote);
+				concept=new Concept(conceptName);
+				ConceptManagement.addConcept(concept);
 			}		
 		}
 	}

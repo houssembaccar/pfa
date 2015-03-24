@@ -1,0 +1,1111 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://210.107.182.67/cloud/Cloudle.owl#"
+     xml:base="http://210.107.182.67/cloud/Cloudle.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://210.107.182.67/cloud/Cloudle.owl"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#hasAPI -->
+
+    <owl:ObjectProperty rdf:about="http://210.107.182.67/cloud/Cloudle.owl#hasAPI">
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#hasCPU -->
+
+    <owl:ObjectProperty rdf:about="http://210.107.182.67/cloud/Cloudle.owl#hasCPU">
+        <rdfs:range rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#CPU"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#hasFileSystem -->
+
+    <owl:ObjectProperty rdf:about="http://210.107.182.67/cloud/Cloudle.owl#hasFileSystem">
+        <rdfs:range rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#FileSystem"/>
+        <rdfs:domain rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#OperatingSystem"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#hasIDE -->
+
+    <owl:ObjectProperty rdf:about="http://210.107.182.67/cloud/Cloudle.owl#hasIDE">
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#hasOperatingSystem -->
+
+    <owl:ObjectProperty rdf:about="http://210.107.182.67/cloud/Cloudle.owl#hasOperatingSystem">
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#hasProgrammingLanguage -->
+
+    <owl:ObjectProperty rdf:about="http://210.107.182.67/cloud/Cloudle.owl#hasProgrammingLanguage">
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#hasStorageManagementSoftware -->
+
+    <owl:ObjectProperty rdf:about="http://210.107.182.67/cloud/Cloudle.owl#hasStorageManagementSoftware">
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#topObjectProperty -->
+
+    <owl:ObjectProperty rdf:about="&owl;topObjectProperty"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#hasCPUSpeed -->
+
+    <owl:DatatypeProperty rdf:about="http://210.107.182.67/cloud/Cloudle.owl#hasCPUSpeed">
+        <rdfs:domain rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#CPU"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#hasCacheMemory -->
+
+    <owl:DatatypeProperty rdf:about="http://210.107.182.67/cloud/Cloudle.owl#hasCacheMemory">
+        <rdfs:range rdf:resource="&xsd;double"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#hasDataStorage -->
+
+    <owl:DatatypeProperty rdf:about="http://210.107.182.67/cloud/Cloudle.owl#hasDataStorage">
+        <rdfs:range rdf:resource="&xsd;double"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#hasMemory -->
+
+    <owl:DatatypeProperty rdf:about="http://210.107.182.67/cloud/Cloudle.owl#hasMemory">
+        <rdfs:range rdf:resource="&xsd;double"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#hasMultiCore -->
+
+    <owl:DatatypeProperty rdf:about="http://210.107.182.67/cloud/Cloudle.owl#hasMultiCore">
+        <rdfs:domain rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#CPU"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#hasNetworkBandwidth -->
+
+    <owl:DatatypeProperty rdf:about="http://210.107.182.67/cloud/Cloudle.owl#hasNetworkBandwidth">
+        <rdfs:range rdf:resource="&xsd;double"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#hasNetworkLatency -->
+
+    <owl:DatatypeProperty rdf:about="http://210.107.182.67/cloud/Cloudle.owl#hasNetworkLatency">
+        <rdfs:range rdf:resource="&xsd;double"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#hasPrice -->
+
+    <owl:DatatypeProperty rdf:about="http://210.107.182.67/cloud/Cloudle.owl#hasPrice">
+        <rdfs:domain rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#CloudSystem"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#topDataProperty -->
+
+    <owl:DatatypeProperty rdf:about="&owl;topDataProperty"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#AMD -->
+
+    <owl:Class rdf:about="http://210.107.182.67/cloud/Cloudle.owl#AMD">
+        <rdfs:subClassOf rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#CPU"/>
+    </owl:Class>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#CPU -->
+
+    <owl:Class rdf:about="http://210.107.182.67/cloud/Cloudle.owl#CPU">
+        <rdfs:subClassOf rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#Hardware"/>
+    </owl:Class>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#CloudSystem -->
+
+    <owl:Class rdf:about="http://210.107.182.67/cloud/Cloudle.owl#CloudSystem"/>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#CommunicationAsAService -->
+
+    <owl:Class rdf:about="http://210.107.182.67/cloud/Cloudle.owl#CommunicationAsAService">
+        <rdfs:subClassOf rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#CloudSystem"/>
+    </owl:Class>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#DataAsAService -->
+
+    <owl:Class rdf:about="http://210.107.182.67/cloud/Cloudle.owl#DataAsAService">
+        <rdfs:subClassOf rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#CloudSystem"/>
+    </owl:Class>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#DatabaseManagementSystem -->
+
+    <owl:Class rdf:about="http://210.107.182.67/cloud/Cloudle.owl#DatabaseManagementSystem">
+        <rdfs:subClassOf rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#StorageManagementSoftware"/>
+        <owl:disjointWith rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#FileSystem"/>
+    </owl:Class>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#FileSystem -->
+
+    <owl:Class rdf:about="http://210.107.182.67/cloud/Cloudle.owl#FileSystem">
+        <rdfs:subClassOf rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#StorageManagementSoftware"/>
+    </owl:Class>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#FunctionalLanguage -->
+
+    <owl:Class rdf:about="http://210.107.182.67/cloud/Cloudle.owl#FunctionalLanguage">
+        <rdfs:subClassOf rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#ProgrammingLanguage"/>
+    </owl:Class>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#Hardware -->
+
+    <owl:Class rdf:about="http://210.107.182.67/cloud/Cloudle.owl#Hardware"/>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#InfrastructureAsAService -->
+
+    <owl:Class rdf:about="http://210.107.182.67/cloud/Cloudle.owl#InfrastructureAsAService">
+        <rdfs:subClassOf rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#CloudSystem"/>
+    </owl:Class>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#IntelCPU -->
+
+    <owl:Class rdf:about="http://210.107.182.67/cloud/Cloudle.owl#IntelCPU">
+        <rdfs:subClassOf rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#CPU"/>
+    </owl:Class>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#LinuxSeries -->
+
+    <owl:Class rdf:about="http://210.107.182.67/cloud/Cloudle.owl#LinuxSeries">
+        <rdfs:subClassOf rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#UnixSeries"/>
+    </owl:Class>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#LogicalLanguage -->
+
+    <owl:Class rdf:about="http://210.107.182.67/cloud/Cloudle.owl#LogicalLanguage">
+        <rdfs:subClassOf rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#ProgrammingLanguage"/>
+    </owl:Class>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#MainFrameOS -->
+
+    <owl:Class rdf:about="http://210.107.182.67/cloud/Cloudle.owl#MainFrameOS">
+        <rdfs:subClassOf rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#OperatingSystem"/>
+    </owl:Class>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#MobileOS -->
+
+    <owl:Class rdf:about="http://210.107.182.67/cloud/Cloudle.owl#MobileOS">
+        <rdfs:subClassOf rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#OperatingSystem"/>
+    </owl:Class>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#ObjectOrientedLanguage -->
+
+    <owl:Class rdf:about="http://210.107.182.67/cloud/Cloudle.owl#ObjectOrientedLanguage">
+        <rdfs:subClassOf rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#ProgrammingLanguage"/>
+    </owl:Class>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#OperatingSystem -->
+
+    <owl:Class rdf:about="http://210.107.182.67/cloud/Cloudle.owl#OperatingSystem">
+        <rdfs:subClassOf rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#Software"/>
+        <owl:disjointWith rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#StorageManagementSoftware"/>
+    </owl:Class>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#PlatformAsAService -->
+
+    <owl:Class rdf:about="http://210.107.182.67/cloud/Cloudle.owl#PlatformAsAService">
+        <rdfs:subClassOf rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#CloudSystem"/>
+    </owl:Class>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#ProceduralLanguage -->
+
+    <owl:Class rdf:about="http://210.107.182.67/cloud/Cloudle.owl#ProceduralLanguage">
+        <rdfs:subClassOf rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#ProgrammingLanguage"/>
+    </owl:Class>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#ProgrammingLanguage -->
+
+    <owl:Class rdf:about="http://210.107.182.67/cloud/Cloudle.owl#ProgrammingLanguage"/>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#RelationalDBMS -->
+
+    <owl:Class rdf:about="http://210.107.182.67/cloud/Cloudle.owl#RelationalDBMS">
+        <rdfs:subClassOf rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#DatabaseManagementSystem"/>
+    </owl:Class>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#ScriptLanguage -->
+
+    <owl:Class rdf:about="http://210.107.182.67/cloud/Cloudle.owl#ScriptLanguage">
+        <rdfs:subClassOf rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#ProgrammingLanguage"/>
+    </owl:Class>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#Software -->
+
+    <owl:Class rdf:about="http://210.107.182.67/cloud/Cloudle.owl#Software"/>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#SoftwareAsAService -->
+
+    <owl:Class rdf:about="http://210.107.182.67/cloud/Cloudle.owl#SoftwareAsAService">
+        <rdfs:subClassOf rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#CloudSystem"/>
+    </owl:Class>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#StorageManagementSoftware -->
+
+    <owl:Class rdf:about="http://210.107.182.67/cloud/Cloudle.owl#StorageManagementSoftware">
+        <rdfs:subClassOf rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#Software"/>
+    </owl:Class>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#UnixSeries -->
+
+    <owl:Class rdf:about="http://210.107.182.67/cloud/Cloudle.owl#UnixSeries">
+        <rdfs:subClassOf rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#MainFrameOS"/>
+        <owl:disjointWith rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#WindowsSeries"/>
+    </owl:Class>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#WindowsSeries -->
+
+    <owl:Class rdf:about="http://210.107.182.67/cloud/Cloudle.owl#WindowsSeries">
+        <rdfs:subClassOf rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#MainFrameOS"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#AIX -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#AIX">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#UnixSeries"/>
+        <hasFileSystem rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#HFS"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#AMD2.8G -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#AMD2.8G">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#AMD"/>
+        <hasCPUSpeed rdf:datatype="&xsd;double">2.8</hasCPUSpeed>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#AMD3G -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#AMD3G">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#AMD"/>
+        <hasCPUSpeed rdf:datatype="&xsd;double">3</hasCPUSpeed>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#AMDDualCore3G -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#AMDDualCore3G">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#AMD"/>
+        <hasMultiCore rdf:datatype="&xsd;double">2</hasMultiCore>
+        <hasCPUSpeed rdf:datatype="&xsd;double">3</hasCPUSpeed>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#ASP -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#ASP">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#ScriptLanguage"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#AndroidOS -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#AndroidOS">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#MobileOS"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#Athlon_II_X2 -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#Athlon_II_X2">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#AMD"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#Athlon_II_X3 -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#Athlon_II_X3">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#AMD"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#Athlon_II_X4 -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#Athlon_II_X4">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#AMD"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#C -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#C">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#ProceduralLanguage"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#C++ -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#C++">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#ObjectOrientedLanguage"/>
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#ProceduralLanguage"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#CSharp -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#CSharp">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#ObjectOrientedLanguage"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#Core2Duo -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#Core2Duo">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#IntelCPU"/>
+        <hasMultiCore rdf:datatype="&xsd;double">2</hasMultiCore>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#Core2Quad -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#Core2Quad">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#IntelCPU"/>
+        <hasMultiCore rdf:datatype="&xsd;double">4</hasMultiCore>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#Debian -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#Debian">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#LinuxSeries"/>
+        <hasFileSystem rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#ext2"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#Erlang -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#Erlang">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#FunctionalLanguage"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#FAT -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#FAT">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#FileSystem"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#Fedora -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#Fedora">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#LinuxSeries"/>
+        <hasFileSystem rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#ext3"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#Gentoo -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#Gentoo">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#LinuxSeries"/>
+        <hasFileSystem rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#ext4"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#HFS -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#HFS">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#FileSystem"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#HFS+ -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#HFS+">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#FileSystem"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#HP-UX -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#HP-UX">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#UnixSeries"/>
+        <hasFileSystem rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#UFS"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#HPFS -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#HPFS">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#FileSystem"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#Haskell -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#Haskell">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#FunctionalLanguage"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#Intel2.8GHz -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#Intel2.8GHz">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#IntelCPU"/>
+        <hasCPUSpeed rdf:datatype="&xsd;double">2.8</hasCPUSpeed>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#Intel3GHz -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#Intel3GHz">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#IntelCPU"/>
+        <hasCPUSpeed rdf:datatype="&xsd;double">3</hasCPUSpeed>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#IntelCore2Duo2GHz -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#IntelCore2Duo2GHz">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#IntelCPU"/>
+        <hasMultiCore rdf:datatype="&xsd;double">2</hasMultiCore>
+        <hasCPUSpeed rdf:datatype="&xsd;double">2</hasCPUSpeed>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#IntelCore2Duo3GHz -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#IntelCore2Duo3GHz">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#IntelCPU"/>
+        <hasMultiCore rdf:datatype="&xsd;double">2</hasMultiCore>
+        <hasCPUSpeed rdf:datatype="&xsd;double">3</hasCPUSpeed>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#IntelQuadCore2GHz -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#IntelQuadCore2GHz">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#IntelCPU"/>
+        <hasCPUSpeed rdf:datatype="&xsd;double">2</hasCPUSpeed>
+        <hasMultiCore rdf:datatype="&xsd;double">4</hasMultiCore>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#Java -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#Java">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#ObjectOrientedLanguage"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#JavaScript -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#JavaScript">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#ScriptLanguage"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#MacOSX -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#MacOSX">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#UnixSeries"/>
+        <hasFileSystem rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#HFS+"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#Mandrake -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#Mandrake">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#LinuxSeries"/>
+        <hasFileSystem rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#ext2"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#Mathematica -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#Mathematica">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#FunctionalLanguage"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#Mepis -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#Mepis">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#LinuxSeries"/>
+        <hasFileSystem rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#ext3"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#MySQL -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#MySQL">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#RelationalDBMS"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#NTFS -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#NTFS">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#FileSystem"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#Nitix -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#Nitix">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#LinuxSeries"/>
+        <hasFileSystem rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#ext4"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#OCaml -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#OCaml">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#FunctionalLanguage"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#ObjectiveC -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#ObjectiveC">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#ObjectOrientedLanguage"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#Oracle -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#Oracle">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#RelationalDBMS"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#PHP -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#PHP">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#ScriptLanguage"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#Pascal -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#Pascal">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#ProceduralLanguage"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#Pentium -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#Pentium">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#IntelCPU"/>
+        <hasMultiCore rdf:datatype="&xsd;double">1</hasMultiCore>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#Perl -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#Perl">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#ScriptLanguage"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#Phenom_II_X2 -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#Phenom_II_X2">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#AMD"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#Phenom_II_X3 -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#Phenom_II_X3">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#AMD"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#Phenom_II_X4 -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#Phenom_II_X4">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#AMD"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#Phenom_II_X6 -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#Phenom_II_X6">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#AMD"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#PostgreSQL -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#PostgreSQL">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#RelationalDBMS"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#Prolog -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#Prolog">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#LogicalLanguage"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#Python -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#Python">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#ScriptLanguage"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#RedHat -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#RedHat">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#LinuxSeries"/>
+        <hasFileSystem rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#ext2"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#SQLServer -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#SQLServer">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#RelationalDBMS"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#SUSE -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#SUSE">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#LinuxSeries"/>
+        <hasFileSystem rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#ext3"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#SantaFeLinux -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#SantaFeLinux">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#LinuxSeries"/>
+        <hasFileSystem rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#ext4"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#Scheme -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#Scheme">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#FunctionalLanguage"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#Sempron -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#Sempron">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#AMD"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#Slackware -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#Slackware">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#LinuxSeries"/>
+        <hasFileSystem rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#ext2"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#Solaris -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#Solaris">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#UnixSeries"/>
+        <hasFileSystem rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#UFS"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#UFS -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#UFS">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#FileSystem"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#VirtualOperatingSystem -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#VirtualOperatingSystem">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#OperatingSystem"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#Windows7 -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#Windows7">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#WindowsSeries"/>
+        <hasFileSystem rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#NTFS"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#Windows95 -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#Windows95">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#WindowsSeries"/>
+        <hasFileSystem rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#FAT"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#WindowsMe -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#WindowsMe">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#WindowsSeries"/>
+        <hasFileSystem rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#NTFS"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#WindowsMobileOS -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#WindowsMobileOS">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#MobileOS"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#WindowsServer -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#WindowsServer">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#WindowsSeries"/>
+        <hasFileSystem rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#NTFS"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#WindowsVista -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#WindowsVista">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#WindowsSeries"/>
+        <hasFileSystem rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#NTFS"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#WindowsXP -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#WindowsXP">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#WindowsSeries"/>
+        <hasFileSystem rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#NTFS"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#YellowDog -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#YellowDog">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#LinuxSeries"/>
+        <hasFileSystem rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#ext3"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#ext2 -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#ext2">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#FileSystem"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#ext3 -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#ext3">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#FileSystem"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#ext4 -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#ext4">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#FileSystem"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#i3 -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#i3">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#IntelCPU"/>
+        <hasMultiCore rdf:datatype="&xsd;double">2</hasMultiCore>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#i5 -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#i5">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#IntelCPU"/>
+        <hasMultiCore rdf:datatype="&xsd;double">4</hasMultiCore>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#i7 -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#i7">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#IntelCPU"/>
+        <hasMultiCore rdf:datatype="&xsd;double">6</hasMultiCore>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://210.107.182.67/cloud/Cloudle.owl#iPhoneOS -->
+
+    <owl:NamedIndividual rdf:about="http://210.107.182.67/cloud/Cloudle.owl#iPhoneOS">
+        <rdf:type rdf:resource="http://210.107.182.67/cloud/Cloudle.owl#MobileOS"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://210.107.182.67/cloud/Cloudle.owl#CloudSystem"/>
+            <rdf:Description rdf:about="http://210.107.182.67/cloud/Cloudle.owl#ProgrammingLanguage"/>
+            <rdf:Description rdf:about="http://210.107.182.67/cloud/Cloudle.owl#Software"/>
+        </owl:members>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.2.3.22702) http://owlapi.sourceforge.net -->
+
