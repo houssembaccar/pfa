@@ -4,7 +4,16 @@ public class Concept {
 	
 	private String name;
 	private String parentName;
+	private Concept parent;
 	
+	public Concept getParent() {
+		return parent;
+	}
+
+	public void setParent(Concept parent) {
+		this.parent = parent;
+	}
+
 	public String getParentName() {
 		return parentName;
 	}

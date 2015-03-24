@@ -17,7 +17,12 @@ public class ConceptManagement {
 	
 	public static void displayConceptList() {
 		for(int i=0;i<conceptList.size();i++) {
-			System.out.println(conceptList.get(i).getName()+" subclass of    :"+conceptList.get(i).getParentName());
+			if (conceptList.get(i).getParent()!=null)
+			System.out.println(conceptList.get(i).getName()+" subclass of    :"+conceptList.get(i).getParent().getName());
+			else
+				System.out.println(conceptList.get(i).getName()+" subclass of    : Thing");
+
+		    
 		}
 	}
 	
@@ -29,7 +34,7 @@ public class ConceptManagement {
 		boolean condition;
 		for(int i=0;i<conceptList.size();i++) {
 			name=conceptList.get(i).getName();
-			condition= name==conceptName;
+			condition= name.equals(conceptName);
 			if (condition)
 				return conceptList.get(i);
 		}

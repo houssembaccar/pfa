@@ -27,17 +27,23 @@ public class Input{
 			if (currentLine.contains("<rdfs:subClassOf rdf:resource=")) {
 				indexOfFirstQuote=currentLine.indexOf("\"");
 				indexOfSecondQuote=currentLine.lastIndexOf("\"");
-				parentOfConceptName=currentLine.substring(indexOfFirstQuote+40, indexOfSecondQuote);
+				parentOfConceptName=currentLine.substring(indexOfFirstQuote+41, indexOfSecondQuote).trim();
 				ConceptManagement.addParentName(parentOfConceptName,concept);
 			}
 			if (currentLine.contains("<owl:Class rdf:about"))
 			{
 				indexOfFirstQuote=currentLine.indexOf("\"");
 				indexOfSecondQuote=currentLine.lastIndexOf("\"");	
-				conceptName=currentLine.substring(indexOfFirstQuote+40, indexOfSecondQuote);
+				conceptName=currentLine.substring(indexOfFirstQuote+41, indexOfSecondQuote).trim();
 				concept=new Concept(conceptName);
 				ConceptManagement.addConcept(concept);
 			}		
+		}
+		for(int j=0;j<ConceptManagement.getConceptList().size();j++) {
+			Concept currentConcept=ConceptManagement.getConceptList().get(j);
+			if (currentConcept.getParentName()!=null) {
+				currentConcept.setParent(ConceptManagement.searchConcept(ConceptManagement.getConceptList().get(j).getParentName()));
+			}
 		}
 	}
 	public void closeFile(){		
