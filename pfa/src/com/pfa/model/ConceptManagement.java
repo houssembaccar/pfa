@@ -17,10 +17,14 @@ public class ConceptManagement {
 	
 	public static void displayConceptList() {
 		for(int i=0;i<conceptList.size();i++) {
-			if (conceptList.get(i).getParent()!=null)
-			System.out.println(conceptList.get(i).getName()+" subclass of    :"+conceptList.get(i).getParent().getName());
+			if (conceptList.get(i).getParent()!=null){
+				System.out.println(conceptList.get(i).getName()+" subclass of    :"+conceptList.get(i).getParent().getName());
+				if (conceptList.get(i).isIndividual())
+					System.out.println("individual");
+			}
+			
 			else
-				System.out.println(conceptList.get(i).getName()+" subclass of    : Thing");
+				System.out.println(conceptList.get(i).getName()+" subclass of    : Thing"+conceptList.get(i).getParentName());
 
 		    
 		}

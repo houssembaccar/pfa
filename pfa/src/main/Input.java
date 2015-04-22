@@ -37,7 +37,26 @@ public class Input{
 				conceptName=currentLine.substring(indexOfFirstQuote+41, indexOfSecondQuote).trim();
 				concept=new Concept(conceptName);
 				ConceptManagement.addConcept(concept);
-			}		
+			}
+			//add individuals to the tree
+			if (currentLine.contains("<rdf:type rdf:resource=")){
+				indexOfFirstQuote=currentLine.indexOf("\"");
+				indexOfSecondQuote=currentLine.lastIndexOf("\"");
+				parentOfConceptName=currentLine.substring(indexOfFirstQuote+41, indexOfSecondQuote).trim();
+				ConceptManagement.addParentName(parentOfConceptName,concept);
+			}
+			if (currentLine.contains("<owl:NamedIndividual rdf:about")){
+				
+				indexOfFirstQuote=currentLine.indexOf("\"");
+				indexOfSecondQuote=currentLine.lastIndexOf("\"");	
+				conceptName=currentLine.substring(indexOfFirstQuote+41, indexOfSecondQuote).trim();
+				concept=new Concept(conceptName);
+				concept.setIndividual(true);
+				ConceptManagement.addConcept(concept);
+			}
+			//finish adding individuals
+			if (currentLine.contains("General axioms"))
+				break;
 		}
 		for(int j=0;j<ConceptManagement.getConceptList().size();j++) {
 			Concept currentConcept=ConceptManagement.getConceptList().get(j);
