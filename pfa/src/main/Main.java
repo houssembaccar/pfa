@@ -30,11 +30,14 @@ public class Main {
 			simDisp.displayList(simDisp.listSimilarityConcepts(concept.getParent()));
 			System.out.println("\n\n");
 			simDisp.displayList(simDisp.listSimilarityObjectProperty(concept));
+			System.out.println("\n\n");
+			simDisp.displayList(simDisp.listSimilarityDataProperty(concept));
 		}else{
 			simDisp.displayList(simDisp.listSimilarityConcepts(concept));
 		}		
-		/*for(int i=0;i<ConceptManagement.getConceptList().size();i++)
-		System.out.println(similarity.objectPropertySim(concept, ConceptManagement.getConceptList().get(i)));
+		/*System.out.println("\n");
+		for(int i=0;i<ConceptManagement.getConceptList().size();i++)
+		System.out.println(similarity.dataPropertySim(concept, ConceptManagement.getConceptList().get(i)));
 */
 }
 }

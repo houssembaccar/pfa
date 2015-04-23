@@ -43,6 +43,7 @@ public class Similarity {
 		}
 		
 	}
+	//******************************************************************object property similarity****************************************************************************** 
 	public float conceptSim(Concept userConcept,Concept concept){
 		return (float)depthInterDepth(userConcept,concept)/(float)depth(userConcept);
 	}
@@ -69,12 +70,46 @@ public class Similarity {
 			property1= propertyListOfConcept1.get(i);
 			for(int j=0;j<numberOfPropertyOfConcept2;j++){
 				property2=propertyListOfConcept2.get(j);
-				if (property1.getName().equals(property2.getName())){
+				if (property1.getName().equals(property2.getName())&& property1.getType().equals("object")){
 					similaritySum+=conceptSim(concept1.getParent(),concept2.getParent());
 				}
 			}			
 		}
 		return similaritySum/numberOfObjectPropertyOfConcept1;
+	}
+	//*****************************************************************************data property similarity**********************************************************************
+	public int numberOfDataProperty (Concept concept){
+		ArrayList<Property> propertyList=concept.getPropertyList();
+		int numberOfDataProperty=0;
+		for(int i=0;i<propertyList.size();i++){
+			if(propertyList.get(i).getType().equals("data"))
+				numberOfDataProperty++;
+		}
+		return numberOfDataProperty;
+	 }
+	public double dataPropertySim(Concept concept1, Concept concept2){
+		double similaritySum=0;
+		int numberOfDataPropertyOfConcept1=numberOfDataProperty(concept1);
+		int numberOfPropertyOfConcept1=concept1.getPropertyList().size();
+		int numberOfPropertyOfConcept2=concept2.getPropertyList().size();
+		ArrayList<Property> propertyListOfConcept1=concept1.getPropertyList();
+		ArrayList<Property> propertyListOfConcept2=concept2.getPropertyList();
+		Property property1= new Property();
+		Property property2= new Property();
+		double value1=0;
+		double value2=0;
+		for(int i=0;i<numberOfPropertyOfConcept1;i++){
+			property1= propertyListOfConcept1.get(i);
+			for(int j=0;j<numberOfPropertyOfConcept2;j++){
+				property2=propertyListOfConcept2.get(j);
+				if (property1.getName().equals(property2.getName()) && property1.getType().equals("data") && property2.getType().equals("data")){
+					value1=Double.parseDouble( property1.getValues());
+					value2=Double.parseDouble(property2.getValues());
+					similaritySum+=1-Math.abs(value1-value2)/Math.max(value1,value2);
+				}
+			}			
+		}
+		return similaritySum/numberOfDataPropertyOfConcept1;
 	}
 		
 	}

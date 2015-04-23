@@ -6,7 +6,9 @@ import com.pfa.beans.Concept;
 
 public class SimilarityDisplay {
 
-	double sim;
+	double sim=0;
+	double simObjectProperty;
+	double simDataProperty;
 	Concept concept;
 	
 	public SimilarityDisplay(double sim, Concept concept) {
@@ -57,6 +59,23 @@ public class SimilarityDisplay {
 			{// we compare only the similarity between individuals 
 				if (iterConcept.isIndividual()){
 					SimilarityDisplay element= new SimilarityDisplay(similarity.objectPropertySim(concept, ConceptManagement.getConceptList().get(i)),iterConcept);
+					simList.add(element);
+				}
+			}
+		}
+		return sort(simList);
+	}
+	
+	public ArrayList<SimilarityDisplay> listSimilarityDataProperty (Concept concept){
+
+		ArrayList <SimilarityDisplay> simList=new ArrayList<SimilarityDisplay>();
+		Similarity similarity = new Similarity();
+		for (int i=0;i<ConceptManagement.getConceptList().size();i++){
+			Concept iterConcept= ConceptManagement.getConceptList().get(i);
+			if (iterConcept!=null && concept !=null)
+			{// we compare only the similarity between individuals 
+				if (iterConcept.isIndividual()){
+					SimilarityDisplay element= new SimilarityDisplay(similarity.dataPropertySim(concept, ConceptManagement.getConceptList().get(i)),iterConcept);
 					simList.add(element);
 				}
 			}
