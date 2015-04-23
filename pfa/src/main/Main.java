@@ -28,11 +28,13 @@ public class Main {
 		if (concept.isIndividual()){
 			
 			simDisp.displayList(simDisp.listSimilarityConcepts(concept.getParent()));
+			System.out.println("\n\n");
+			simDisp.displayList(simDisp.listSimilarityObjectProperty(concept));
 		}else{
 			simDisp.displayList(simDisp.listSimilarityConcepts(concept));
-		}
-		
-		
-
+		}		
+		/*for(int i=0;i<ConceptManagement.getConceptList().size();i++)
+		System.out.println(similarity.objectPropertySim(concept, ConceptManagement.getConceptList().get(i)));
+*/
 }
 }

@@ -1,12 +1,23 @@
 package com.pfa.beans;
 
+import java.util.ArrayList;
+
 public class Concept {
 	
 	private String name;
 	private String parentName;
 	private Concept parent;
 	private boolean individual;
+    private ArrayList <Property> propertyList=new ArrayList<Property>();
 	
+	public ArrayList<Property> getPropertyList() {
+		return propertyList;
+	}
+
+	public void setPropertyList(ArrayList<Property> propertyList) {
+		this.propertyList = propertyList;
+	}
+
 	public Concept(String name) {
 		this.name=name;
 		this.individual=false;

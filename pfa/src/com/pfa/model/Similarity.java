@@ -3,6 +3,7 @@ package com.pfa.model;
 import java.util.ArrayList;
 
 import com.pfa.beans.Concept;
+import com.pfa.beans.Property;
 
 public class Similarity {
 	public  int depth(Concept concept){
@@ -45,10 +46,36 @@ public class Similarity {
 	public float conceptSim(Concept userConcept,Concept concept){
 		return (float)depthInterDepth(userConcept,concept)/(float)depth(userConcept);
 	}
+	public int numberOfObjectProperty (Concept concept){
+		ArrayList<Property> propertyList=concept.getPropertyList();
+		int numberOfObjectProperty=0;
+		for(int i=0;i<propertyList.size();i++){
+			if(propertyList.get(i).getType().equals("object"))
+				numberOfObjectProperty++;
+		}
+		return numberOfObjectProperty;
+	}
 	
-	
-			
-			
+	public double objectPropertySim(Concept concept1, Concept concept2){
+		double similaritySum=0;
+		int numberOfObjectPropertyOfConcept1=numberOfObjectProperty(concept1);
+		int numberOfPropertyOfConcept1=concept1.getPropertyList().size();
+		int numberOfPropertyOfConcept2=concept2.getPropertyList().size();
+		ArrayList<Property> propertyListOfConcept1=concept1.getPropertyList();
+		ArrayList<Property> propertyListOfConcept2=concept2.getPropertyList();
+		Property property1= new Property();
+		Property property2= new Property();
+		for(int i=0;i<numberOfPropertyOfConcept1;i++){
+			property1= propertyListOfConcept1.get(i);
+			for(int j=0;j<numberOfPropertyOfConcept2;j++){
+				property2=propertyListOfConcept2.get(j);
+				if (property1.getName().equals(property2.getName())){
+					similaritySum+=conceptSim(concept1.getParent(),concept2.getParent());
+				}
+			}			
+		}
+		return similaritySum/numberOfObjectPropertyOfConcept1;
+	}
 		
 	}
 	

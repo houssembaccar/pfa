@@ -32,7 +32,7 @@ public class SimilarityDisplay {
 
 	public ArrayList<SimilarityDisplay> listSimilarityConcepts (Concept concept){
 
-		ArrayList <SimilarityDisplay> simList=new ArrayList();
+		ArrayList <SimilarityDisplay> simList=new ArrayList<SimilarityDisplay>();
 		Similarity similarity = new Similarity();
 		for (int i=0;i<ConceptManagement.getConceptList().size();i++){
 			Concept iterConcept= ConceptManagement.getConceptList().get(i);
@@ -42,11 +42,28 @@ public class SimilarityDisplay {
 					SimilarityDisplay element= new SimilarityDisplay(similarity.conceptSim(concept, iterConcept.getParent()),iterConcept);
 					simList.add(element);
 				}
-
 			}
 		}
 		return sort(simList);
 	}
+	
+	public ArrayList<SimilarityDisplay> listSimilarityObjectProperty (Concept concept){
+
+		ArrayList <SimilarityDisplay> simList=new ArrayList<SimilarityDisplay>();
+		Similarity similarity = new Similarity();
+		for (int i=0;i<ConceptManagement.getConceptList().size();i++){
+			Concept iterConcept= ConceptManagement.getConceptList().get(i);
+			if (iterConcept!=null && concept !=null)
+			{// we compare only the similarity between individuals 
+				if (iterConcept.isIndividual()){
+					SimilarityDisplay element= new SimilarityDisplay(similarity.objectPropertySim(concept, ConceptManagement.getConceptList().get(i)),iterConcept);
+					simList.add(element);
+				}
+			}
+		}
+		return sort(simList);
+	}
+	
 	@Override
 	public String toString() {
 		return "SimilarityDisplay [sim=" + sim + ", concept=" + concept.getName() + "]";
@@ -66,8 +83,7 @@ public class SimilarityDisplay {
 		
 		return simList;
 	}
-	public void displayList(ArrayList<SimilarityDisplay> list){
-		
+	public void displayList(ArrayList<SimilarityDisplay> list){		
 		for(int i=0;i<list.size();i++){
 			System.out.println(list.get(i).toString());
 		}

@@ -17,13 +17,16 @@ public class Input{
 		}
 	}
 	public void readFile (){
-		int indexOfFirstQuote;
-		int indexOfSecondQuote;	
-		String conceptName;
+		int indexOfFirstQuote,indexOfPropertyName,indexOfPropertyValue;
+		int indexOfSecondQuote,indexOfEndPropertyName,indexOfEndPropertyValue;	
+		String dataType = "data";
+		String objectType="object";	
+		String conceptName,propertyName,propertyValue;
 		String parentOfConceptName;
 		Concept concept = null;
+		String currentLine;
 		while(scanner.hasNext()){
-			String currentLine=scanner.nextLine();
+			currentLine=scanner.nextLine();
 			if (currentLine.contains("<rdfs:subClassOf rdf:resource=")) {
 				indexOfFirstQuote=currentLine.indexOf("\"");
 				indexOfSecondQuote=currentLine.lastIndexOf("\"");
@@ -44,6 +47,30 @@ public class Input{
 				indexOfSecondQuote=currentLine.lastIndexOf("\"");
 				parentOfConceptName=currentLine.substring(indexOfFirstQuote+41, indexOfSecondQuote).trim();
 				ConceptManagement.addParentName(parentOfConceptName,concept);
+				currentLine=scanner.nextLine();
+				while(!currentLine.contains("</owl:NamedIndividual>")){
+					if (currentLine.contains("rdf:datatype")){
+						indexOfPropertyName=currentLine.indexOf("<");
+						indexOfEndPropertyName=currentLine.indexOf("rdf:datatype");
+						propertyName=currentLine.substring(indexOfPropertyName+1, indexOfEndPropertyName-1).trim();
+						indexOfPropertyValue=currentLine.indexOf(">");
+						indexOfEndPropertyValue=currentLine.indexOf("</");
+						propertyValue=currentLine.substring(indexOfPropertyValue+1,indexOfEndPropertyValue).trim();
+						Property dataProperty=new Property(propertyName,propertyValue,dataType);
+						concept.getPropertyList().add(dataProperty);
+					}else if (currentLine.contains("<has")){//faute à corriger
+						
+						indexOfPropertyName=currentLine.indexOf("<");
+						indexOfEndPropertyName=currentLine.indexOf("rdf:resource");
+						propertyName=currentLine.substring(indexOfPropertyName+1, indexOfEndPropertyName-1).trim();
+						indexOfFirstQuote=currentLine.indexOf("\"");
+						indexOfSecondQuote=currentLine.lastIndexOf("\"");	
+						propertyValue=currentLine.substring(indexOfFirstQuote+41, indexOfSecondQuote).trim();
+						Property objectProperty=new Property(propertyName,propertyValue,objectType);
+						concept.getPropertyList().add(objectProperty);
+					}						
+						currentLine=scanner.nextLine();
+				}
 			}
 			if (currentLine.contains("<owl:NamedIndividual rdf:about")){
 				
