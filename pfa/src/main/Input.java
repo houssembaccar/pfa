@@ -17,7 +17,7 @@ public class Input{
 		}
 	}
 	public void readFile (){
-		int indexOfFirstQuote,indexOfPropertyName,indexOfPropertyValue;
+		int indexOfSharp,indexOfPropertyName,indexOfPropertyValue;
 		int indexOfSecondQuote,indexOfEndPropertyName,indexOfEndPropertyValue;	
 		String dataType = "data";
 		String objectType="object";	
@@ -28,24 +28,24 @@ public class Input{
 		while(scanner.hasNext()){
 			currentLine=scanner.nextLine();
 			if (currentLine.contains("<rdfs:subClassOf rdf:resource=")) {
-				indexOfFirstQuote=currentLine.indexOf("\"");
+				indexOfSharp=currentLine.indexOf("#");
 				indexOfSecondQuote=currentLine.lastIndexOf("\"");
-				parentOfConceptName=currentLine.substring(indexOfFirstQuote+41, indexOfSecondQuote).trim();
+				parentOfConceptName=currentLine.substring(indexOfSharp+1, indexOfSecondQuote).trim();
 				ConceptManagement.addParentName(parentOfConceptName,concept);
 			}
 			if (currentLine.contains("<owl:Class rdf:about"))
 			{
-				indexOfFirstQuote=currentLine.indexOf("\"");
+				indexOfSharp=currentLine.indexOf("#");
 				indexOfSecondQuote=currentLine.lastIndexOf("\"");	
-				conceptName=currentLine.substring(indexOfFirstQuote+41, indexOfSecondQuote).trim();
+				conceptName=currentLine.substring(indexOfSharp+1, indexOfSecondQuote).trim();
 				concept=new Concept(conceptName);
 				ConceptManagement.addConcept(concept);
 			}
 			//add individuals to the tree
 			if (currentLine.contains("<rdf:type rdf:resource=")){
-				indexOfFirstQuote=currentLine.indexOf("\"");
+				indexOfSharp=currentLine.indexOf("#");
 				indexOfSecondQuote=currentLine.lastIndexOf("\"");
-				parentOfConceptName=currentLine.substring(indexOfFirstQuote+41, indexOfSecondQuote).trim();
+				parentOfConceptName=currentLine.substring(indexOfSharp+1, indexOfSecondQuote).trim();
 				ConceptManagement.addParentName(parentOfConceptName,concept);
 				currentLine=scanner.nextLine();
 				while(!currentLine.contains("</owl:NamedIndividual>")){
@@ -63,9 +63,9 @@ public class Input{
 						indexOfPropertyName=currentLine.indexOf("<");
 						indexOfEndPropertyName=currentLine.indexOf("rdf:resource");
 						propertyName=currentLine.substring(indexOfPropertyName+1, indexOfEndPropertyName-1).trim();
-						indexOfFirstQuote=currentLine.indexOf("\"");
+						indexOfSharp=currentLine.indexOf("#");
 						indexOfSecondQuote=currentLine.lastIndexOf("\"");	
-						propertyValue=currentLine.substring(indexOfFirstQuote+41, indexOfSecondQuote).trim();
+						propertyValue=currentLine.substring(indexOfSharp+1, indexOfSecondQuote).trim();
 						Property objectProperty=new Property(propertyName,propertyValue,objectType);
 						concept.getPropertyList().add(objectProperty);
 					}						
@@ -74,9 +74,9 @@ public class Input{
 			}
 			if (currentLine.contains("<owl:NamedIndividual rdf:about")){
 				
-				indexOfFirstQuote=currentLine.indexOf("\"");
+				indexOfSharp=currentLine.indexOf("#");
 				indexOfSecondQuote=currentLine.lastIndexOf("\"");	
-				conceptName=currentLine.substring(indexOfFirstQuote+41, indexOfSecondQuote).trim();
+				conceptName=currentLine.substring(indexOfSharp+1, indexOfSecondQuote).trim();
 				concept=new Concept(conceptName);
 				concept.setIndividual(true);
 				ConceptManagement.addConcept(concept);

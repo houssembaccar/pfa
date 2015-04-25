@@ -60,6 +60,7 @@ public class Similarity {
 	public double objectPropertySim(Concept concept1, Concept concept2){
 		double similaritySum=0;
 		int numberOfObjectPropertyOfConcept1=numberOfObjectProperty(concept1);
+		if (numberOfObjectPropertyOfConcept1==0) return 0;
 		int numberOfPropertyOfConcept1=concept1.getPropertyList().size();
 		int numberOfPropertyOfConcept2=concept2.getPropertyList().size();
 		ArrayList<Property> propertyListOfConcept1=concept1.getPropertyList();
@@ -90,6 +91,7 @@ public class Similarity {
 	public double dataPropertySim(Concept concept1, Concept concept2){
 		double similaritySum=0;
 		int numberOfDataPropertyOfConcept1=numberOfDataProperty(concept1);
+		if (numberOfDataPropertyOfConcept1==0) return 0;
 		int numberOfPropertyOfConcept1=concept1.getPropertyList().size();
 		int numberOfPropertyOfConcept2=concept2.getPropertyList().size();
 		ArrayList<Property> propertyListOfConcept1=concept1.getPropertyList();
