@@ -23,6 +23,10 @@ public class Concept {
 		this.individual=false;
 	}
 	
+	public Concept() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public boolean isEqualTo(Concept concept){
 		if (this.name==concept.getName() && this.parentName==concept.getParentName()){
 			return true;
@@ -60,6 +64,16 @@ public class Concept {
 
 	public void setIndividual(boolean individual) {
 		this.individual = individual;
+	}
+	
+	public Property getProperty(String propertyName){
+		ArrayList<Property> propertyList=getPropertyList();
+		int size=propertyList.size();
+		for(int i=0;i<size;i++){
+			if(propertyList.get(i).getName().equals(propertyName))
+				return propertyList.get(i);
+		}
+		return null;
 	}
 
 }
