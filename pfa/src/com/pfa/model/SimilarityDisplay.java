@@ -81,7 +81,7 @@ public class SimilarityDisplay {
 				}
 			}
 		}
-		return sort(simList);
+		return simList;
 	}
 	
 	@Override
@@ -92,7 +92,7 @@ public class SimilarityDisplay {
 				+ similaritySum + ", concept=" + concept.getName() + "]";
 	}
 	// this method sort an arrayList given as parameter
-	private ArrayList<SimilarityDisplay> sort(ArrayList<SimilarityDisplay> simList){
+	public ArrayList<SimilarityDisplay> sort(ArrayList<SimilarityDisplay> simList){
 		int max= 0;
 		SimilarityDisplay aux=new SimilarityDisplay();
 		for(int i=0;i<simList.size()-1;i++){
@@ -110,5 +110,15 @@ public class SimilarityDisplay {
 		for(int i=0;i<list.size();i++){
 			System.out.println(list.get(i).toString());
 		}
+	}
+	public ArrayList<SimilarityDisplay> listSimilaritySum (ArrayList<SimilarityDisplay> finalResult,ArrayList<SimilarityDisplay> simList){
+		double sum=0;
+		for(int i=0;i<finalResult.size();i++){
+			sum=finalResult.get(i).getSimilaritySum()+simList.get(i).getSimilaritySum();
+			finalResult.get(i).setSimilaritySum(sum);
+
+			finalResult.get(i).setConcept(simList.get(i).getConcept());
+		}		
+		return finalResult;	
 	}
 }

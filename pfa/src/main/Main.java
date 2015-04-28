@@ -1,6 +1,7 @@
 package main;
 
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.pfa.beans.Concept;
@@ -32,7 +33,23 @@ public class Main {
 		
 		SimilarityDisplay simDisp=new SimilarityDisplay();
 		System.out.println("\n\n");
-		simDisp.displayList(simDisp.listSimilarity(propertyManager.associateConceptToPropertyWithValue(property)));
+		UserInputHandler userInputhandler=new UserInputHandler();
+		
+		Scanner userScanner = new Scanner(System.in);
+		String inputString= userScanner.nextLine();
+		userInputhandler.setArrayOfWords(inputString);
+		ArrayList<SimilarityDisplay> resultList=new ArrayList<SimilarityDisplay>();
+		
+		resultList=simDisp.listSimilarity(userInputhandler.associateConceptToInputWord("ob==d"));
+		for (int i=0;i<userInputhandler.getArrayOfWords().length;i++){
+			Concept concept=userInputhandler.associateConceptToInputWord(userInputhandler.getArrayOfWords()[i]);
+			simDisp.listSimilaritySum(resultList, simDisp.listSimilarity(concept));
+			
+		}
+		resultList=simDisp.sort(resultList);
+		simDisp.displayList(resultList);
+		System.out.println();
+		
 		
 		/*System.out.println("please type in the name of the service you are looking for :\n ");
 		serviceName =scanner.nextLine();
