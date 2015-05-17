@@ -24,7 +24,7 @@ public class ConceptManagement {
 			}
 			
 			else
-				System.out.println("\n"+conceptList.get(i).getName()+" subclass of    : Thing"+conceptList.get(i).getParentName());
+				System.out.println(""+conceptList.get(i).getName()+" subclass of    : Thing");
 			for(int j=0;j<conceptList.get(i).getPropertyList().size();j++)
 			System.out.println(conceptList.get(i).getPropertyList().get(j).toString());
 

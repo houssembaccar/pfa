@@ -58,7 +58,7 @@ public class Input{
 						propertyValue=currentLine.substring(indexOfPropertyValue+1,indexOfEndPropertyValue).trim();
 						Property dataProperty=new Property(propertyName,propertyValue,dataType);
 						concept.getPropertyList().add(dataProperty);
-					}else if (currentLine.contains("<has")){//faute à corriger
+					}else if (currentLine.contains("rdf:resource=")&& !currentLine.contains("<rdf:type")){//faute à corriger
 						
 						indexOfPropertyName=currentLine.indexOf("<");
 						indexOfEndPropertyName=currentLine.indexOf("rdf:resource");

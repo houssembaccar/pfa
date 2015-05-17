@@ -11,6 +11,11 @@ public class UserInputHandler {
 	
 	private String[] arrayOfWords;
 	
+	public enum InputType {
+
+	    individual, objectPropertyWithValue, dataPropertyWithValue, objectProperty, dataProperty, unknown
+
+	}
 	
 	public String[] getArrayOfWords() {
 		return arrayOfWords;
@@ -51,7 +56,83 @@ public class UserInputHandler {
 			concept = propertyManager.associateConceptToPropertyWithValue(property);
 		}
 		return concept;	
-
 	}
-
+	public InputType isOfType(String word){
+		
+		String propertyName = null;
+		String propertyValue = null;
+		String PropertyType;
+		
+		
+		 if (word.contains("=") ){
+			int indexOfEqual=word.indexOf("=");
+			propertyName=word.substring(0,indexOfEqual);
+			propertyValue=word.substring(indexOfEqual+1);
+		    PropertyType="object";
+			Property property=new Property(propertyName,propertyValue,PropertyType);	
+	}
+		ArrayList<Concept> conceptList=ConceptManagement.getConceptList();
+		ArrayList<Property> propertyList;
+		Concept iterConcept=new Concept();
+		Property iterProperty=new Property();
+		int conceptCounter=0;
+		int propertyCounter=0;
+		double iterPropertyValue=0;
+			    
+		while (conceptCounter < conceptList.size()) {
+			iterConcept=conceptList.get(conceptCounter);
+			if (iterConcept.isIndividual()){
+				if (iterConcept.getName().equals(word))
+				   return InputType.individual;
+				propertyList = iterConcept.getPropertyList();
+				propertyCounter=0;
+				//loop all the properties of the individual iterConcept
+				while( propertyCounter<propertyList.size()){
+					iterProperty=iterConcept.getPropertyList().get(propertyCounter);
+					if (iterProperty.getType().equals("object")){
+						if (iterProperty.getName().equals(word))
+							return InputType.objectProperty;
+						else if (iterProperty.getName().equals(propertyName))
+							return InputType.objectPropertyWithValue;
+					}
+					else if (iterProperty.getType().equals("data")){
+						if (iterProperty.getName().equals(word))
+							return InputType.dataProperty;
+						else if (iterProperty.getName().equals(propertyName)){
+						try{
+							Double.parseDouble(propertyValue);
+							return InputType.dataPropertyWithValue;
+						}catch(NumberFormatException e){
+							return InputType.unknown;
+						}
+							
+					}
+					}
+					propertyCounter++;
+					}
+					}					
+			conceptCounter++;
+				}
+		return InputType.unknown;
+			}	
+	public boolean validInput(){
+		boolean validInput=true;
+		boolean unknownInput=true;
+		int numberOfIndividual=0;
+		for (int i=0;i<arrayOfWords.length;i++){
+			if(isOfType(arrayOfWords[i]).equals(InputType.individual)){
+				numberOfIndividual++;
+			}
+			if (unknownInput && !isOfType(arrayOfWords[i]).equals(InputType.unknown)){
+				unknownInput=false;
+			}
+		}
+		if (numberOfIndividual > 1)
+			validInput= false;
+		if ((numberOfIndividual ==1 && !isOfType(arrayOfWords[0]).equals(InputType.individual)) || unknownInput)
+				validInput = false;
+		return validInput;	
+	}
+			
+		
 }

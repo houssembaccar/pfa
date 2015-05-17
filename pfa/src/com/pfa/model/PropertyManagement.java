@@ -2,6 +2,9 @@ package com.pfa.model;
 
 import java.util.ArrayList;
 
+import main.UserInputHandler;
+import main.UserInputHandler.InputType;
+
 import com.pfa.beans.Concept;
 import com.pfa.beans.Property;
 
@@ -92,5 +95,43 @@ public class PropertyManagement {
 		}
 		return closerConcept;
 	}
+	public Property associateWordToProperty(String word){
+		UserInputHandler userInputHandler=new UserInputHandler();
+		Property property = null;
+		int indexOfEqual=0;
+		String propertyValue;
+		String propertyName;
+		if (userInputHandler.isOfType(word).equals(InputType.dataProperty)){
+			property=new Property(word,"","data");
+		}else if (userInputHandler.isOfType(word).equals(InputType.dataPropertyWithValue)){
+			indexOfEqual=word.indexOf("=");
+			propertyValue=word.substring(indexOfEqual+1);
+			propertyName=word.substring(0,indexOfEqual);
+			property=new Property(propertyName,propertyValue,"data");
+		}else if (userInputHandler.isOfType(word).equals(InputType.objectProperty)){
+			property=new Property(word,"","object");
+		}else if (userInputHandler.isOfType(word).equals(InputType.objectPropertyWithValue)){
+			indexOfEqual=word.indexOf("=");
+			propertyValue=word.substring(indexOfEqual+1);
+			propertyName=word.substring(0,indexOfEqual);
+			property=new Property(propertyName,propertyValue,"object");
+		}
+		return property;
+	}
+	
+	public ArrayList<Property> associateQueryForListOfProperties(String[] arrayOfWords){
+		ArrayList<Property> propertyList = new ArrayList<Property>();
+		UserInputHandler userInputhandler=new UserInputHandler();
+		int i=0;
+		InputType firstWord=userInputhandler.isOfType(arrayOfWords[0]);
+		if((firstWord.equals(InputType.dataProperty))||(firstWord.equals(InputType.dataPropertyWithValue))||(firstWord.equals(InputType.objectProperty))||(firstWord.equals(InputType.objectPropertyWithValue))){
+			propertyList.add(associateWordToProperty(arrayOfWords[0]));
+		}
+		for( i=1; i<arrayOfWords.length;i++){
+			propertyList.add(associateWordToProperty(arrayOfWords[i]));
+		}
+		return propertyList;
+	}
+		
 
 }

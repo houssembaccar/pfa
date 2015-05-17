@@ -67,8 +67,10 @@ public class Similarity {
 		ArrayList<Property> propertyListOfConcept2=concept2.getPropertyList();
 		Property property1= new Property();
 		Property property2= new Property();
+		//loop all properties of concept 1
 		for(int i=0;i<numberOfPropertyOfConcept1;i++){
 			property1= propertyListOfConcept1.get(i);
+			// loop all properties of concept 2 
 			for(int j=0;j<numberOfPropertyOfConcept2;j++){
 				property2=propertyListOfConcept2.get(j);
 				if (property1.getName().equals(property2.getName())&& property1.getType().equals("object")){

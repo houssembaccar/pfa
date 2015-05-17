@@ -2,7 +2,14 @@ package com.pfa.model;
 
 import java.util.ArrayList;
 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
+import main.UserInputHandler;
+import main.UserInputHandler.InputType;
+
 import com.pfa.beans.Concept;
+import com.pfa.beans.Property;
 
 public class SimilarityDisplay {
 
@@ -86,10 +93,7 @@ public class SimilarityDisplay {
 	
 	@Override
 	public String toString() {
-		return "SimilarityDisplay [simConcept=" + simConcept
-				+ ", simObjectProperty=" + simObjectProperty
-				+ ", simDataProperty=" + simDataProperty + ", similaritySum="
-				+ similaritySum + ", concept=" + concept.getName() + "]";
+		return " [ concept=" + concept.getName() + "]";
 	}
 	// this method sort an arrayList given as parameter
 	public ArrayList<SimilarityDisplay> sort(ArrayList<SimilarityDisplay> simList){
@@ -120,5 +124,67 @@ public class SimilarityDisplay {
 			finalResult.get(i).setConcept(simList.get(i).getConcept());
 		}		
 		return finalResult;	
+	}
+	//this function eliminate idividuals that haven't a given property.
+	public ArrayList<SimilarityDisplay> eliminateInappropriateIndividuals (ArrayList<SimilarityDisplay> simList,Property property){
+		
+		Concept individual;
+		boolean hasProperty=false;
+		for(int i=0;i<simList.size();i++){
+			hasProperty=false;
+			individual =simList.get(i).getConcept();
+			if (individual.isIndividual()){
+				ArrayList<Property> propertyList=individual.getPropertyList();
+				if(propertyList.size()!=0){
+					for (int j=0;j<propertyList.size();j++){
+						if (property.getName().equals(propertyList.get(j).getName())){
+							if (property.getValues().equals("")){
+								hasProperty=true;
+							}
+							else if(property.getValues().equals(individual.getPropertyList().get(j).getValues())){
+								hasProperty=true;
+
+							}
+						}
+							
+					}				
+				}
+				if (!hasProperty){
+					System.out.println(individual.getName()+"   who has "+individual.getPropertyList().toString()+"  =====> remouved \n");
+					simList.remove(i);
+					i--;
+				}
+			}
+		}
+		return simList;
+	}
+	public ArrayList<SimilarityDisplay> search(String query){
+		UserInputHandler userInputHandler=new UserInputHandler();
+		userInputHandler.setArrayOfWords(query);
+        ArrayList<SimilarityDisplay> resultList=new ArrayList<SimilarityDisplay>();
+        userInputHandler.setArrayOfWords(query);
+        String [] arrayOfWords = userInputHandler.getArrayOfWords();
+        PropertyManagement propertyManager=new PropertyManagement();
+        ArrayList<Property> propertyList=propertyManager.associateQueryForListOfProperties(arrayOfWords);
+        
+        if (userInputHandler.validInput()){
+        	if (userInputHandler.isOfType(arrayOfWords[0]).equals(InputType.individual)){
+        		resultList=listSimilarity(ConceptManagement.searchConcept(arrayOfWords[0]));
+        		}
+        	else{
+        		resultList=listSimilarity(propertyManager.associateConceptToPropertyWithOutValue(propertyList.get(0)));
+        	}
+        	for (int i=0;i<propertyList.size();i++){
+        		Property property=propertyList.get(i);
+        		if (property!=null){
+            		resultList=eliminateInappropriateIndividuals(resultList,property );
+        		}
+        	}
+        }	
+		else {
+			JOptionPane.showMessageDialog(new JFrame(), "you must enter an individual followed or not by a sequence of properties.\n to see the list of individuals and properties you can consult the ontology.","unvalid input warning",JOptionPane.WARNING_MESSAGE);
+			System.out.println("unvalid Input");
+		}
+		return resultList;
 	}
 }
